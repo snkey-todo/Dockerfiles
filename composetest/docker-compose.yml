@@ -1,0 +1,12 @@
+# 根据docker的版本来写，我的docker版本是1.18, 对应的是version 3
+version: '3'
+services: 
+  web:
+    build: .
+    ports: 
+      - "5000:5000"
+    # 将当前目录挂载到容器的“/code”目录，可以实现本地修改代码，容器自动刷新，而不需要重新创建容器
+    volumes: 
+      - .:/code
+  redis:
+    image: "redis:alpine"
